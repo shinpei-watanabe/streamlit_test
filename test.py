@@ -9,16 +9,16 @@ import japanize_matplotlib
 app_mode = st.sidebar.selectbox("モードを選択してください", ["勤怠登録アプリ", "勤怠登録アプリ（管理用）"])
 
 # SQLite3データベースに接続
-conn = sqlite3.connect('attendance.db')
+conn = sqlite3.connect('./attendance.db')
 conn.execute('''
- CREATE TABLE IF NOT EXISTS attendance ( 
-     id INTEGER PRIMARY KEY, 
-     employee_id INTEGER NOT NULL, 
-     date DATE NOT NULL, 
-     status TEXT NOT NULL, 
-     check_in_time TIMESTAMP,
-     check_out_time TIMESTAMP
-) 
+    CREATE TABLE IF NOT EXISTS attendance ( 
+        id INTEGER PRIMARY KEY, 
+        employee_id INTEGER NOT NULL, 
+        date DATE NOT NULL, 
+        status TEXT NOT NULL, 
+        check_in_time TIMESTAMP,
+        check_out_time TIMESTAMP
+    ) 
 ''')
 conn.commit()
 cursor = conn.cursor()
